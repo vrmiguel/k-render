@@ -18,9 +18,9 @@ k-render is a command-line based application. There is one obligatory argument, 
 ./krender --obj head.obj 
 krender: height and width not set. Assuming 3200 x 3200.
 krender: read model "head.obj" with 1258 vertices and 2492 faces.
-krender: succesfully saved "output-wireframe.tga".
-krender: succesfully saved "output-gouraud-no-z.tga".
-krender: succesfully saved "output-gourand-with-z.tga".
+krender: successfully saved "output-wireframe.tga".
+krender: successfully saved "output-gouraud-no-z.tga".
+krender: successfully saved "output-gourand-with-z.tga".
 ```
 
 The following images were saved:

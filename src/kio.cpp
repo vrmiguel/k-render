@@ -148,6 +148,6 @@ bool save_result(TGAImage img, const char *filename, bool rle) {
         return false;
     }
     out.close();
-    cout << "krender: succesfully saved \"" << filename << "\".\n";
+    cout << "krender: successfully saved \"" << filename << "\".\n";
     return true;
 }
