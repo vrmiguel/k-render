@@ -16,7 +16,7 @@ int main(int argc, char ** argv) {
 
 
     save_result(wireframe, "output-wireframe.tga");
-    //save_result(gouraud,   "output-gouraud-no-z.tga");
+    save_result(gouraud,   "output-gouraud-no-z.tga");
     //save_result(z_buffered,   "output-random-colors.tga");
     save_result(gouraud_z,   "output-gourand-with-z.tga");
     return 0;
