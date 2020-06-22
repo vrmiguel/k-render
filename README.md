@@ -4,6 +4,7 @@ k-render is a minimal software renderer written in C++11. It reads [Wavefront .O
 
 ## Features
 
+* Somewhat fast Bresenham line algorithm implementation
 * Wireframe rendering
 * Gouraud shading
 * Z-buffering
