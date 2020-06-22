@@ -36,3 +36,7 @@ The only dependencies are QMake and a C++11 compiler.
 
 Build by running
 ``` qmake && make ```
+
+## About
+
+This is a basic project made in order to learn more about computer graphics and was made following class guides from Dmitry Sokolov.
