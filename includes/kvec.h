@@ -4,7 +4,7 @@
 #include <cmath>
 #include <fstream>
 
-//! Light modification of Dmitry V. Sokolov's implementation of Vec2 and Vec3 templates.
+//! Modification of Dmitry V. Sokolov's implementation of Vec2 and Vec3 templates.
 //! See ktypes.h/.cpp for Dmitry's copyright notice.
 
 template <class t> struct Vec2 {

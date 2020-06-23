@@ -47,10 +47,11 @@ typedef signed int    s32;
 
 struct config_s {
     char * obj_file;
-    u32    height;
-    u32    width;
-    bool   rotation_set;
-    float  rotation;
+    u32    height;          //! Height of the output TGA file.
+    u32    width;           //! Width of the output TGA file.
+    bool   rotation_set[3] = { false };
+                            //! Checks whether rotation was set for each coordinate. The order is x, y, z.
+    float  rotation[3];     //! Keeps the rotation thetas for each coordinate. The order is x, y, z.
 };
 typedef struct config_s config_t;
 

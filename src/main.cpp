@@ -8,10 +8,25 @@ const TGAColor red   = TGAColor(255, 0,   0,   255);
 int main(int argc, char ** argv) {
     config_t cfg = parse_cli_input(argc, argv);
     Model model = Model(cfg.obj_file);
-    if (cfg.rotation_set)
+
+    //rotate(&model, cfg);
+
+    if (cfg.rotation_set[0])
     {
-        std::cout << "krender: rotating with theta = " << cfg.rotation << ".\n";
-        model.rotate(cfg.rotation);
+        std::cout << "krender: rotating x with theta = " << cfg.rotation[0] << ".\n";
+        model.rotate_x(cfg.rotation[0]);
+    }
+
+    if (cfg.rotation_set[1])
+    {
+        std::cout << "krender: rotating y with theta = " << cfg.rotation[1] << ".\n";
+        model.rotate_y(cfg.rotation[1]);
+    }
+
+    if (cfg.rotation_set[2])
+    {
+        std::cout << "krender: rotating z with theta = " << cfg.rotation[2] << ".\n";
+        model.rotate_z(cfg.rotation[2]);
     }
 
     TGAImage wireframe    = draw_wireframe(model, cfg, white);             // Draws wireframe

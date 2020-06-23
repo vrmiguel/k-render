@@ -14,6 +14,68 @@ using std::abs;
 using std::cerr;
 using std::ifstream;
 
+void rotate(Model model, config_t cfg)
+{
+    if (cfg.rotation_set[0])
+    {
+        std::cout << "krender: rotating x with theta = " << cfg.rotation[0] << ".\n";
+        model.rotate_x(cfg.rotation[0]);
+    }
+
+    if (cfg.rotation_set[1])
+    {
+        std::cout << "krender: rotating y with theta = " << cfg.rotation[1] << ".\n";
+        model.rotate_y(cfg.rotation[1]);
+    }
+
+    if (cfg.rotation_set[2])
+    {
+        std::cout << "krender: rotating z with theta = " << cfg.rotation[2] << ".\n";
+        model.rotate_z(cfg.rotation[2]);
+    }
+}
+
+
+void Model::rotate_x(float theta)
+{
+    float sin_theta = sin(theta);
+    float cos_theta = cos(theta);
+    for (Vec3f & vert : verts)
+    {
+        float y = vert.y;
+        float z = vert.z;
+        vert.y  = y * cos_theta - z * sin_theta;
+        vert.z  = z * cos_theta + y * sin_theta;
+    }
+}
+
+void Model::rotate_y(float theta)
+{
+    float cos_theta = cos(theta);
+    float sin_theta = sin(theta);
+    for (Vec3f & vert : verts)
+    {
+        float x = vert.x;
+        float z = vert.z;
+        vert.x  = x * cos_theta + z * sin_theta;
+        vert.z  = z * cos_theta - x * sin_theta;
+    }
+}
+
+
+void Model::rotate_z(float theta)
+{
+    float cos_theta = cos(theta);
+    float sin_theta = sin(theta);
+    for (Vec3f & vert : verts)
+    {
+        float x = vert.x;
+        float z = vert.z;
+        vert.x = x * cos_theta - z * sin_theta;
+        vert.z = z * cos_theta + x * sin_theta;
+    }
+}
+
 // Barycentric coordinates
 Vec3f get_bar_coord(Vec3f A, Vec3f B, Vec3f C, Vec3f P)
 {
@@ -137,20 +199,6 @@ TGAImage apply_gouraud_shade_no_z_buffer(Model model, config_t cfg)
         }
     }
     return image;
-}
-
-void Model::rotate(float theta)
-{
-    float cos_theta = cos(theta);
-    float sin_theta = sin(theta);
-
-    for (Vec3f & vert : verts)
-    {
-        float x = vert.x;
-        float z = vert.z;
-        vert.x = x * cos_theta - z * sin_theta;
-        vert.z = z * cos_theta + x * sin_theta;
-    }
 }
 
 //! Obj parser by Dmitry V. Sokolov

@@ -20,15 +20,35 @@ config_t parse_cli_input(int argc, char ** argv)
     bool width_set = false, height_set = false, obj_set;
     for (u8 i = 1; i < argc; i++)
     {
-        if (!strcmp(argv[i], "-r") || !strcmp(argv[i], "--rotate"))
+        if (!strcmp(argv[i], "-x"))
         {
             if (i + 1 >= argc)
             {
-                cerr << "krender: missing value to --rotate";
+                cerr << "krender: missing value to -x";
                 exit(0);
             }
-            cfg.rotation_set = true;
-            cfg.rotation = std::stof(argv[++i]);
+            cfg.rotation_set[0] = true;
+            cfg.rotation[0] = std::stof(argv[++i]);
+        }
+        else if (!strcmp(argv[i], "-y"))
+        {
+            if (i + 1 >= argc)
+            {
+                cerr << "krender: missing value to -y";
+                exit(0);
+            }
+            cfg.rotation_set[1] = true;
+            cfg.rotation[1] = std::stof(argv[++i]);
+        }
+        else if (!strcmp(argv[i], "-z"))
+        {
+            if (i + 1 >= argc)
+            {
+                cerr << "krender: missing value to -z";
+                exit(0);
+            }
+            cfg.rotation_set[2] = true;
+            cfg.rotation[2] = std::stof(argv[++i]);
         }
         else if (!strcmp(argv[i], "-H") || !strcmp(argv[i], "--help"))
         {

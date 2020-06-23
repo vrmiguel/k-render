@@ -11,9 +11,12 @@ public:
     vector<Vec3f>       verts;
     vector<vector<int>> faces;
     Model(const char *filename);
-    void rotate(float theta);
+    void rotate_x(float theta);
+    void rotate_y(float theta);
+    void rotate_z(float theta);
 };
 
+void     rotate(Model model, config_t cfg);
 TGAImage apply_gouraud_shade_z_buffer(Model model, config_t cfg);
 TGAImage triangle_fill_random_colors(Model model, config_t cfg);
 TGAImage apply_gouraud_shade_no_z_buffer(Model model, config_t cfg);
