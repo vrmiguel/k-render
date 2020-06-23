@@ -13,14 +13,24 @@ config_t parse_cli_input(int argc, char ** argv)
     config_t cfg;
     if (argc == 1)
     {
-        cerr << "Usage: ./krender [-w, --width <width>] [-h, --height <height>] -o, --obj <obj-file>\n";
+        cerr << "Usage: ./krender [-w, --width <width>] [-r, --rotate <theta>] [-h, --height <height>] -o, --obj <obj-file>\n";
         cerr << "Use options '-H' or '--help' for help.\n";
         exit(0);
     }
     bool width_set = false, height_set = false, obj_set;
     for (u8 i = 1; i < argc; i++)
     {
-        if (!strcmp(argv[i], "-H") || !strcmp(argv[i], "--help"))
+        if (!strcmp(argv[i], "-r") || !strcmp(argv[i], "--rotate"))
+        {
+            if (i + 1 >= argc)
+            {
+                cerr << "krender: missing value to --rotate";
+                exit(0);
+            }
+            cfg.rotation_set = true;
+            cfg.rotation = std::stof(argv[++i]);
+        }
+        else if (!strcmp(argv[i], "-H") || !strcmp(argv[i], "--help"))
         {
             printf("krender beta - github.com/vrmiguel/krender\n");
             printf("%-20s\tSets the output TGA's width.  Optional.\n", "-w, --width <arg>");
@@ -33,6 +43,7 @@ config_t parse_cli_input(int argc, char ** argv)
             if (i + 1 >= argc)
             {
                 cerr << "krender: missing value to --width";
+                exit(0);
             }
             cfg.width = std::atoi(argv[++i]);
             width_set = true;
@@ -42,7 +53,7 @@ config_t parse_cli_input(int argc, char ** argv)
             if (i + 1 >= argc)
             {
                 cerr << "krender: missing value to --height";
-                continue;
+                exit(0);
             }
             cfg.height = std::atoi(argv[++i]);
             height_set = true;

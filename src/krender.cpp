@@ -139,6 +139,20 @@ TGAImage apply_gouraud_shade_no_z_buffer(Model model, config_t cfg)
     return image;
 }
 
+void Model::rotate(float theta)
+{
+    float cos_theta = cos(theta);
+    float sin_theta = sin(theta);
+
+    for (Vec3f & vert : verts)
+    {
+        float x = vert.x;
+        float z = vert.z;
+        vert.x = x * cos_theta - z * sin_theta;
+        vert.z = z * cos_theta + x * sin_theta;
+    }
+}
+
 //! Obj parser by Dmitry V. Sokolov
 Model::Model(const char *filename) : verts(), faces() {
     std::ifstream in;

@@ -11,6 +11,7 @@ public:
     vector<Vec3f>       verts;
     vector<vector<int>> faces;
     Model(const char *filename);
+    void rotate(float theta);
 };
 
 TGAImage apply_gouraud_shade_z_buffer(Model model, config_t cfg);

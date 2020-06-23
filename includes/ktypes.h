@@ -47,8 +47,10 @@ typedef signed int    s32;
 
 struct config_s {
     char * obj_file;
-    u32 height;
-    u32 width;
+    u32    height;
+    u32    width;
+    bool   rotation_set;
+    float  rotation;
 };
 typedef struct config_s config_t;
 

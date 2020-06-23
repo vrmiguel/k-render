@@ -8,6 +8,11 @@ const TGAColor red   = TGAColor(255, 0,   0,   255);
 int main(int argc, char ** argv) {
     config_t cfg = parse_cli_input(argc, argv);
     Model model = Model(cfg.obj_file);
+    if (cfg.rotation_set)
+    {
+        std::cout << "krender: rotating with theta = " << cfg.rotation << ".\n";
+        model.rotate(cfg.rotation);
+    }
 
     TGAImage wireframe    = draw_wireframe(model, cfg, white);             // Draws wireframe
     TGAImage   gouraud    = apply_gouraud_shade_no_z_buffer(model, cfg);   // Applies Gouraud shading without z-buffering
