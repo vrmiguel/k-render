@@ -11,7 +11,9 @@ k-render is a minimal software renderer written in C++11. It reads [Wavefront .O
 
 ## Usage
 
-k-render is a command-line based application. There is one obligatory argument, `-o, --obj`, which must lead to an .OBJ file (optionally including pathname). You can also set the output file's resolution with `-w, --width` and `-h, --height`. If only one of these is supplied, a square resulting image will be implied.
+```Usage: ./krender [-w, --width <width>] [-r, --rotate <theta>] [-h, --height <height>] -o, --obj <obj-file>```
+
+k-render is a command-line based application. There is one obligatory argument, `-o, --obj`, which must lead to an .OBJ file (optionally including pathname). You can also set the output file's resolution with `-w, --width` and `-h, --height`. If only one of these is supplied, a square resulting image will be implied. Set rotation with `-r, --rotation` followed by a floating-point value.
 
 #### Example usage
 
@@ -30,6 +32,8 @@ The following images were saved:
 ![Gouraud shading without z-buffering](https://user-images.githubusercontent.com/36349314/85306524-fce88100-b484-11ea-9cf2-28d4109b95a8.png)
 ![Wireframe](https://user-images.githubusercontent.com/36349314/85306526-fe19ae00-b484-11ea-9d62-59cdfadd2483.png)
 
+An example with rotation:
+![Rotation](https://user-images.githubusercontent.com/36349314/85357532-df98ce80-b4e7-11ea-9623-2fce6f595e30.png)
 
 ## Build 
 
